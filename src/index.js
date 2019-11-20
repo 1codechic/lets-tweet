@@ -7,7 +7,7 @@ function Tweet({ tweet }) {
         <div className="tweet">
             <Avatar hash={tweet.gravatar}/>
             <div className="content">
-                <Author /> <Time />
+                <Author author={tweet.author}/> <Time />
                 <Message text={tweet.message} />
             <div className="buttons">
                 <ReplyButton />
@@ -36,7 +36,8 @@ function Message( {text}) {
     )
 }
 
-function Author() {
+function Author({author}) {
+    const {name, handle} = author;
     return (
         <span className="author">
         <span className="name">Tiffany McElrath</span>
