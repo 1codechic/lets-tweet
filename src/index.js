@@ -5,7 +5,7 @@ import './index.css';
 function Tweet({ tweet }) {
     return (
         <div className="tweet">
-            <Avatar />
+            <Avatar hash={tweet.gravatar}/>
             <div className="content">
                 <Author /> <Time />
                 <Message />
@@ -21,9 +21,10 @@ function Tweet({ tweet }) {
     );
 }
 
-function Avatar() {
+function Avatar({ hash }) {
+    const url = `https://www.gravatar.com/avatar/${hash}`
     return (
-        <img src="https://www.gravatar.com/avatar/nothing" className="avatar" alt="avatar" />
+        <img src= {url} className="avatar" alt="avatar" />
     );
 }
 
