@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import moment from "moment";
 import './index.css';
 
 function Tweet({ tweet }) {
@@ -7,7 +8,7 @@ function Tweet({ tweet }) {
         <div className="tweet">
             <Avatar hash={tweet.gravatar}/>
             <div className="content">
-                <Author author={tweet.author}/> <Time />
+                <Author author={tweet.author}/> <Time time={tweet.time}/>
                 <Message text={tweet.message} />
             <div className="buttons">
                 <ReplyButton />
@@ -46,9 +47,14 @@ function Author({author}) {
     );
 }
 
-const Time = () => (
-    <span className="time">3h ago</span>
-);
+const Time =({time}) => {
+    const timeString = moment(time).fromNow();
+    return (
+        <span className="time">
+            {timeString}
+        </span>
+    );
+};
 
 const ReplyButton = () => (
     <i className="fa fa-reply reply-button" />
