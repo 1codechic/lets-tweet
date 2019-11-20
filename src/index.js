@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import './index.css';
 
-function Tweet() {
+function Tweet({ tweet }) {
     return (
         <div className="tweet">
             <Avatar />
@@ -64,4 +64,16 @@ const MoreOptions = () => (
     <i className="fa fa-ellipsis-h more-options-button" />
 )
 
-ReactDOM.render(<Tweet/>, document.querySelector('#root'));
+const testTweet = {
+    message: "Learning about props in React",
+    gravatar: "xyz",
+    author: {
+        handle: "1codechic",
+        name: "Tiffany McElrath"
+    },
+    likes: 2,
+    retweets: 0,
+    timestamp: "2019-11-19 15:30:23"
+};
+
+ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
